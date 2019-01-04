@@ -1,0 +1,8 @@
+
+.titled-pane:focused > .title > .arrow-button .arrow {
+    -fx-background-color: black;
+}
+
+.titled-pane > .title {
+    -fx-pref-width: 200.0;
+}
