@@ -4,29 +4,29 @@ import com.sflpro.budgeteer.BudgeteerShutdownHandler;
 import com.sflpro.budgeteer.BugeteerConfiguration;
 import com.sflpro.budgeteer.ui.ViewFactory;
 import com.sflpro.budgeteer.ui.newproject.NewProjectController;
+import com.sflpro.budgeteer.ui.project.ProjectController;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
-
-import java.io.IOException;
 
 @Component
 public class LauncherController {
 
     private final BudgeteerShutdownHandler shutdownHandler;
-    private final ViewFactory viewFactory;
     private final ApplicationContext ctx;
+
+    @FXML
+    private BorderPane mainBorderPane;
 
     @Autowired
     public LauncherController(final BudgeteerShutdownHandler shutdownHandler,
-                              final ViewFactory viewFactory,
-                              final ApplicationContext ctx) throws IOException {
+                              final ApplicationContext ctx) {
         this.shutdownHandler = shutdownHandler;
-        this.viewFactory = viewFactory;
         this.ctx = ctx;
     }
 
@@ -35,7 +35,7 @@ public class LauncherController {
     }
 
     public void showNewProjectDialog(ActionEvent actionEvent) {
-        NewProjectController.showNewProjectDialog(ctx);
+        NewProjectController.showNewProjectDialog(ctx, (Stage) mainBorderPane.getScene().getWindow());
     }
 
     public static void showLauncherWindow(final ApplicationContext ctx) {
@@ -57,5 +57,10 @@ public class LauncherController {
         });
         stage.centerOnScreen();
         stage.show();
+    }
+
+    public void loadProject(ActionEvent actionEvent) {
+        ((Stage)mainBorderPane.getScene().getWindow()).close();
+        ProjectController.show(ctx, "aaa");
     }
 }

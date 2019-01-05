@@ -1,7 +1,10 @@
 package com.sflpro.budgeteer.ui.newproject;
 
 import com.sflpro.budgeteer.ui.ViewFactory;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -10,16 +13,32 @@ import org.springframework.stereotype.Component;
 
 public class NewProjectController {
 
-    public static void showNewProjectDialog(ApplicationContext ctx) {
+    @FXML
+    private BorderPane mainBorderPane;
+
+    public static void showNewProjectDialog(final ApplicationContext ctx, final Stage previousStage) {
         ViewFactory viewFactory = ctx.getBean(ViewFactory.class);
 
         Scene newProjectScene = new Scene(viewFactory.getNewProjectView());
 
-        Stage s = new Stage();
-        s.setScene(newProjectScene);
-        s.setTitle("New project");
-        s.setAlwaysOnTop(true);
-        s.setResizable(false);
-        s.show();
+        final Stage stage = new Stage();
+        stage.setScene(newProjectScene);
+        stage.setTitle("New project");
+        stage.centerOnScreen();
+        stage.setAlwaysOnTop(true);
+        stage.setResizable(false);
+        stage.show();
+
+        stage.setOnCloseRequest(event -> {
+            previousStage.requestFocus();
+        });
+    }
+
+    public void createProject(ActionEvent actionEvent) {
+
+    }
+
+    public void cancel(ActionEvent actionEvent) {
+        ((Stage)mainBorderPane.getScene().getWindow()).close();
     }
 }
