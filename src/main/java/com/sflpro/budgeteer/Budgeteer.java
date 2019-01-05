@@ -31,29 +31,18 @@ public class Budgeteer extends Application {
     public void init() throws Exception {
         springContext = SpringApplication.run(Budgeteer.class);
         configuration = springContext.getBean(BugeteerConfiguration.class);
-        ViewFactory viewFactory = springContext.getBean(ViewFactory.class);
-        scene = new Scene(viewFactory.getLauncherView());
-        scene.getStylesheets().add(configuration.getMainCssPath());
+
+
     }
 
     @Override
     public void stop() throws Exception {
-        springContext.stop();
+        springContext.getBean(BudgeteerShutdownHandler.class).commenceShutdown();
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
-        startApplication(stage);
-    }
-
-    private void startApplication(final Stage primaryStage) {
+    public void start(Stage primaryStage) throws Exception {
         log.info("Starting {}!", configuration.getProjectName());
-        primaryStage.setTitle(configuration.getProjectName());
-        primaryStage.centerOnScreen();
-        primaryStage.setOnCloseRequest(e -> {
-            springContext.getBean(BudgeteerShutdownHandler.class).commenceShutdown();
-        });
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        LauncherController.showLauncherWindow(springContext, primaryStage);
     }
 }

@@ -2,6 +2,7 @@ package com.sflpro.budgeteer.ui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -14,7 +15,7 @@ public class ViewFactory {
 
     private final ApplicationContext ctx;
 
-    private volatile VBox launcherView;
+    private volatile BorderPane launcherView;
     private volatile AnchorPane projectView;
     private volatile AnchorPane newProjectView;
 
@@ -24,7 +25,7 @@ public class ViewFactory {
     }
 
 
-    public VBox getLauncherView() {
+    public BorderPane getLauncherView() {
         if(launcherView == null) {
             synchronized (this) {
                 if(launcherView == null) {
