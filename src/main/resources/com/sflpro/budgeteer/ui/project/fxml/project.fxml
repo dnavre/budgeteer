@@ -3,63 +3,64 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <BorderPane fx:id="mainBorderPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sflpro.budgeteer.ui.project.ProjectController">
-   <children>
+    <top>
         <MenuBar prefHeight="29.0" prefWidth="600.0">
-           <menus>
-               <Menu mnemonicParsing="false" text="File">
-                   <items>
-                       <MenuItem mnemonicParsing="false" text="Close" />
-                   </items>
-               </Menu>
-               <Menu mnemonicParsing="false" text="Edit">
-                   <items>
-                       <MenuItem mnemonicParsing="false" text="Delete" />
-                   </items>
-               </Menu>
-               <Menu mnemonicParsing="false" text="Help">
-                   <items>
-                       <MenuItem mnemonicParsing="false" text="About" />
-                   </items>
-               </Menu>
-           </menus>
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
         </MenuBar>
-
-        <TabPane layoutY="118.0" prefHeight="235.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+    </top>
+   <center>
+    <TabPane layoutY="118.0" prefHeight="235.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Features">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="267.0" prefWidth="419.0">
-                     <children>
-                        <TreeTableView prefHeight="200.0" prefWidth="600.0">
-                          <columns>
-                            <TreeTableColumn prefWidth="93.0" text="Component" />
-                            <TreeTableColumn prefWidth="99.0" text="Feature" />
-                          </columns>
-                        </TreeTableView>
-                     </children>
-              </AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="Versions">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
-        <Tab text="Teams">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-        </Tab>
-        <Tab text="Settings">
-            <content>
-                <FlowPane layoutY="1.0" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <ListView prefHeight="166.0" prefWidth="200.0" />
-                     </children>
-                </FlowPane>
-            </content>
-        </Tab>
+            <Tab text="Features">
+                <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="267.0" prefWidth="419.0">
+                         <children>
+                            <TreeTableView prefHeight="200.0" prefWidth="600.0">
+                              <columns>
+                                <TreeTableColumn prefWidth="93.0" text="Component" />
+                                <TreeTableColumn prefWidth="99.0" text="Feature" />
+                              </columns>
+                            </TreeTableView>
+                         </children>
+                  </AnchorPane>
+                </content>
+                </Tab>
+                <Tab text="Versions">
+                <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                </content>
+            </Tab>
+            <Tab text="Teams">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                </content>
+            </Tab>
+            <Tab text="Settings">
+                <content>
+                    <FlowPane layoutY="1.0" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                         <children>
+                            <ListView prefHeight="166.0" prefWidth="200.0" />
+                         </children>
+                    </FlowPane>
+                </content>
+            </Tab>
         </tabs>
-        </TabPane>
-   </children>
+    </TabPane>
+   </center>
 </BorderPane>

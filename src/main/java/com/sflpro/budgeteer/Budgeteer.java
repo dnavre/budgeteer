@@ -1,9 +1,7 @@
 package com.sflpro.budgeteer;
 
-import com.sflpro.budgeteer.ui.ViewFactory;
 import com.sflpro.budgeteer.ui.launcher.LauncherController;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
@@ -31,8 +29,6 @@ public class Budgeteer extends Application {
     public void init() throws Exception {
         springContext = SpringApplication.run(Budgeteer.class);
         configuration = springContext.getBean(BugeteerConfiguration.class);
-
-
     }
 
     @Override
@@ -42,7 +38,7 @@ public class Budgeteer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        log.info("Starting {}!", configuration.getProjectName());
+        log.info("Starting {}!", configuration.getAppName());
         LauncherController.showLauncherWindow(springContext, primaryStage);
     }
 }

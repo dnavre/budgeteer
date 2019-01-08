@@ -1,5 +1,7 @@
 package com.sflpro.budgeteer.ui.project;
 
+import com.sflpro.budgeteer.model.Project;
+import com.sflpro.budgeteer.ui.UIHolder;
 import com.sflpro.budgeteer.ui.ViewFactory;
 import com.sflpro.budgeteer.ui.launcher.LauncherController;
 import javafx.fxml.FXML;
@@ -20,14 +22,15 @@ public class ProjectController {
     public ProjectController(final ApplicationContext ctx) {
     }
 
-    public static void show(final ApplicationContext ctx, String projectName) {
+    public static void show(final ApplicationContext ctx, Project project) {
         ViewFactory viewFactory = ctx.getBean(ViewFactory.class);
 
-        Scene projectScene = new Scene(viewFactory.getProjectView());
+        UIHolder<BorderPane, ProjectController> uiHolder = viewFactory.getProjectView();
+        Scene projectScene = new Scene(uiHolder.getScene());
 
         final Stage stage = new Stage();
         stage.setScene(projectScene);
-        stage.setTitle("Budgeteer: " + projectName);
+        stage.setTitle("Budgeteer: " + project.getName());
         stage.centerOnScreen();
         stage.show();
 

@@ -26,6 +26,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.openjfx:javafx-fxml:11")
     implementation("org.openjfx:javafx-controls:11")
+    implementation("org.controlsfx:controlsfx:9.0.0")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("junit:junit:4.12")

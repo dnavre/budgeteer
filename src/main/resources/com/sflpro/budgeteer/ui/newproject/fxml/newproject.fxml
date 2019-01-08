@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <BorderPane fx:id="mainBorderPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sflpro.budgeteer.ui.newproject.NewProjectController">
@@ -8,7 +7,7 @@
       <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onAction="#createProject" text="Create project" />
-            <Button mnemonicParsing="false" onAction="#cancel" text="Cancel" />
+            <Button mnemonicParsing="false" onAction="#closeWindow" text="Cancel" />
          </children>
       </HBox>
    </bottom>
@@ -28,7 +27,14 @@
         </rowConstraints>
          <children>
             <Label text="Project name:" />
-            <TextField GridPane.columnIndex="1" />
+            <TextField fx:id="name" GridPane.columnIndex="1" />
+            <Label text="Save path:" GridPane.rowIndex="1" />
+            <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
+               <children>
+                  <TextField fx:id="path" editable="false" HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" text="Browse" HBox.hgrow="NEVER" />
+               </children>
+            </HBox>
          </children>
       </GridPane>
    </center>

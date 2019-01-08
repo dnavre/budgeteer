@@ -2,6 +2,8 @@ package com.sflpro.budgeteer.ui.launcher;
 
 import com.sflpro.budgeteer.BudgeteerShutdownHandler;
 import com.sflpro.budgeteer.BugeteerConfiguration;
+import com.sflpro.budgeteer.model.Project;
+import com.sflpro.budgeteer.ui.UIHolder;
 import com.sflpro.budgeteer.ui.ViewFactory;
 import com.sflpro.budgeteer.ui.newproject.NewProjectController;
 import com.sflpro.budgeteer.ui.project.ProjectController;
@@ -46,7 +48,8 @@ public class LauncherController {
         ViewFactory viewFactory = ctx.getBean(ViewFactory.class);
         BugeteerConfiguration configuration = ctx.getBean(BugeteerConfiguration.class);
 
-        Scene launcher = new Scene(viewFactory.getLauncherView());
+        UIHolder<BorderPane, LauncherController> uiHolder = viewFactory.getLauncherView();
+        Scene launcher = new Scene(uiHolder.getScene());
         launcher.getStylesheets().add(configuration.getMainCssPath());
 
         stage.setScene(launcher);
@@ -61,6 +64,10 @@ public class LauncherController {
 
     public void loadProject(ActionEvent actionEvent) {
         ((Stage)mainBorderPane.getScene().getWindow()).close();
-        ProjectController.show(ctx, "aaa");
+
+        Project tempTest = new Project();
+        tempTest.setName("aaa");
+
+        ProjectController.show(ctx, tempTest);
     }
 }
